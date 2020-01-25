@@ -20,9 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView wifiList;
     private WifiManager wifiManager;
-
     private final int MY_PERMISSIONS_ACCESS_COARSE_LOCATION = 1;
-
+    static MainActivity activityA;
     WifiReceiver receiverWifi;
 
 
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        activityA = this;
         wifiList = findViewById(R.id.wifiList);
         Button buttonScan = findViewById(R.id.scanBtn);
 
@@ -55,11 +54,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    public static MainActivity getInstance(){
+        return   activityA;
+    }
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        receiverWifi = new WifiReceiver(wifiManager, wifiList);
+        receiverWifi = new WifiReceiver(wifiManager, wifiList,this);
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
         registerReceiver(receiverWifi, intentFilter);
@@ -104,4 +105,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
+//    public static MainActivity getInstance() {
+//        return instance;
+//    }
+//
+//    public void myMethod() {
+//        // do something...
+//    }
 }
