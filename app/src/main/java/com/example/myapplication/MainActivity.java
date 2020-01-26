@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+//#Main Reference https://www.tutorialspoint.com/android-scan-wifi-networks-programmatically
 public class MainActivity extends AppCompatActivity {
 
     private ListView wifiList;
@@ -106,11 +107,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    public static MainActivity getInstance() {
-//        return instance;
-//    }
-//
-//    public void myMethod() {
-//        // do something...
-//    }
 }
