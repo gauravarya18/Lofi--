@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,9 +21,9 @@ public class Main2Activity extends AppCompatActivity {
         ArrayList<String> list = (ArrayList<String>) args.getSerializable("ARRAYLIST");
 
         //Ref#3 https://stackoverflow.com/questions/14355731/killing-one-activity-from-another/14356774
-        MainActivity.getInstance().finish();
+       // MainActivity.getInstance().finish();
 
-        TextView tv=findViewById(R.id.textView);
+        EditText tv=findViewById(R.id.textView);
         for(int i=0;i<list.size();i++)
         {
             tv.setText(tv.getText()+"\n"+list.get(i)+"\n");
